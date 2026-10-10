@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">富士白苑 ロゴ</title>
+  <desc id="desc">富士山、日の丸、雲、流水を組み合わせた高級旅館「富士白苑」のロゴ</desc>
+  <defs>
+    <style>
+      .navy{fill:#1F3048;stroke:#1F3048;}
+      .navy-stroke{fill:none;stroke:#1F3048;}
+      .gold{fill:#B79A5A;stroke:#B79A5A;}
+      .gold-stroke{fill:none;stroke:#B79A5A;}
+      .jp{fill:#1F3048;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;font-weight:500;}
+      .en{fill:#1F3048;font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:0.22em;}
+    </style>
+  </defs>
+
+  <!-- emblem -->
+  <g transform="translate(0,10)">
+    <circle cx="600" cy="330" r="210" class="gold-stroke" stroke-width="4"/>
+    <circle cx="735" cy="160" r="28" class="gold"/>
+
+    <!-- cloud / mist -->
+    <g fill="none" stroke="#B79A5A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M390 205 C435 205, 455 205, 490 205"/>
+      <path d="M370 232 C425 232, 455 232, 520 232"/>
+      <path d="M400 259 C450 259, 490 259, 540 259"/>
+    </g>
+
+    <!-- mountain -->
+    <path d="M455 350 L570 200 L600 235 L630 200 L750 350 Z" class="navy" stroke-width="2"/>
+    <!-- snow cap -->
+    <path d="M540 240 L570 200 L600 235 L630 200 L660 240 L630 225 L600 258 L570 225 Z" fill="#FFFFFF" stroke="#1F3048" stroke-width="3"/>
+
+    <!-- lower mountain / ridge -->
+    <path d="M430 365 C505 330, 570 335, 635 350 C680 360, 725 365, 770 360 C725 385, 650 390, 575 380 C520 373, 475 370, 430 365 Z" class="navy"/>
+
+    <!-- flowing water -->
+    <path d="M535 395 C605 380, 690 385, 755 405 C710 420, 650 420, 590 415 C545 411, 510 412, 485 425 C500 407, 513 402, 535 395 Z" class="navy"/>
+    <path d="M500 430 C565 420, 660 428, 705 445 C660 456, 600 454, 555 446 C530 442, 510 443, 492 450" class="navy-stroke" stroke-width="8" stroke-linecap="round"/>
+    <path d="M540 465 C600 458, 655 465, 680 478 C645 486, 610 484, 575 478 C558 475, 547 476, 537 481" class="navy-stroke" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="600" y="650" text-anchor="middle" class="jp" font-size="86" letter-spacing="0.16em">富士白苑</text>
+
+  <g transform="translate(600,720)">
+    <line x1="-280" y1="0" x2="-190" y2="0" class="gold-stroke" stroke-width="4"/>
+    <line x1="190" y1="0" x2="280" y2="0" class="gold-stroke" stroke-width="4"/>
+    <text x="0" y="10" text-anchor="middle" class="en" font-size="30">FUJI HAKUEN</text>
+  </g>
+</svg>

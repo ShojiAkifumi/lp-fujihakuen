@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富士宮 富士白苑｜富士を眺め、季節を味わい、何もしない贅沢を。</title>
+<meta name="description" content="富士山の麓、富士宮の旅館「富士白苑」。富士山を眺め、季節の料理を味わい、温泉に身をゆだねる。宿で過ごす時間そのものが旅の目的になる一泊を。">
+<meta property="og:title" content="富士宮 富士白苑">
+<meta property="og:description" content="富士を眺め、季節を味わい、何もしない贅沢を。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/fuji.jpg">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--
+  画像について
+  - images/ 内の写真はクライアント提供素材（素材/ をWeb用に縮小）
+  - https://images.unsplash.com/ の写真は仮置き。本番前に旅館の実写真へ差し替えること
+  予約ボタンについて
+  - .js-reserve / .js-vacancy の href を既存予約システムのURLに差し替えること
+-->
+
+<!-- ==================== ヘッダー ==================== -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="header__logo" aria-label="富士宮 富士白苑 トップへ">
+      <img src="images/logo.svg" alt="富士白苑" width="96" height="72">
+    </a>
+    <nav class="header__nav" aria-label="ページ内ナビゲーション">
+      <ul>
+        <li><a href="#about">この宿について</a></li>
+        <li><a href="#room">客室</a></li>
+        <li><a href="#onsen">温泉</a></li>
+        <li><a href="#dining">お料理</a></li>
+        <li><a href="#fujinomiya">富士宮を楽しむ</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="btn btn--primary header__cta js-reserve" target="_blank" rel="noopener">宿泊を予約する</a>
+    <button class="hamburger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <nav class="drawer__nav" aria-label="メニュー">
+    <ul>
+      <li><a href="#about">この宿について</a></li>
+      <li><a href="#room">客室</a></li>
+      <li><a href="#onsen">温泉</a></li>
+      <li><a href="#dining">お料理</a></li>
+      <li><a href="#fujinomiya">富士宮を楽しむ</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+  </nav>
+  <div class="drawer__cta">
+    <a href="#" class="btn btn--primary js-reserve" target="_blank" rel="noopener">宿泊を予約する</a>
+    <a href="#" class="btn btn--ghost js-vacancy" target="_blank" rel="noopener">空室を確認する</a>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ==================== 01 ヒーロー ==================== -->
+<section class="hero">
+  <!-- 旅館であることが一目で伝わるよう、外観→客室→露天風呂→富士山の順に切り替え -->
+  <div class="hero__bg">
+    <figure class="hero__slide is-active is-zoom" data-caption="旅館外観">
+      <img src="https://images.unsplash.com/photo-1769345808116-7eee6dfad421?auto=format&fit=crop&w=2400&q=80" alt="灯りがともる旅館の外観">
+    </figure>
+    <figure class="hero__slide" data-caption="客室">
+      <img src="images/room.jpg" alt="畳敷きの静かな客室" width="2000" height="1500">
+    </figure>
+    <figure class="hero__slide" data-caption="露天風呂">
+      <img src="https://images.unsplash.com/photo-1785057707880-777f72acea8f?auto=format&fit=crop&w=2400&q=80" alt="山々を望む露天風呂">
+    </figure>
+    <figure class="hero__slide" data-caption="富士山の眺め">
+      <img src="images/fuji.jpg" alt="夕暮れの光に染まる富士山" width="2400" height="1350">
+    </figure>
+  </div>
+  <div class="hero__inner">
+    <h1 class="hero__catch">
+      <span>富士を眺め、</span><span>季節を味わい、</span><span>何もしない贅沢を。</span>
+    </h1>
+    <div class="hero__body">
+      <p class="hero__brand">
+        <span class="hero__brand-sub">富士山麓・富士宮の温泉旅館</span>
+        <span class="hero__brand-name">富士白苑</span>
+        <span class="hero__brand-en">Fuji Hakuen</span>
+      </p>
+      <p class="hero__lead">
+        富士山の麓、富士宮。<br>
+        雄大な山を眺め、<br class="sp">季節の恵みを味わい、<br>温泉に身をゆだねる。<br>
+        ここでは、時間さえも<br class="sp">ゆっくり流れていきます。
+      </p>
+      <div class="hero__cta">
+        <a href="#" class="btn btn--light-fill js-reserve" target="_blank" rel="noopener">宿泊を予約する</a>
+        <a href="#" class="btn btn--light js-vacancy" target="_blank" rel="noopener">空室を確認する</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__indicator" aria-hidden="true">
+    <p class="hero__caption">旅館外観</p>
+    <ol class="hero__dots"><li class="is-active"></li><li></li><li></li><li></li></ol>
+  </div>
+  <a href="#about" class="scroll" aria-label="下へスクロール"><span>Scroll</span></a>
+</section>
+
+<!-- ==================== 02 この宿について ==================== -->
+<section class="sec about" id="about">
+  <div class="inner about__grid">
+    <div class="about__text fade">
+      <p class="sec-en">About</p>
+      <h2 class="sec-title">富士山の麓で、<br>旅の時間を深くする。</h2>
+      <div class="prose">
+        <p>観光地を巡るだけが、<br>旅ではありません。</p>
+        <p>窓の外に広がる富士山を眺める。</p>
+        <p>湯に浸かり、<br>季節の料理を味わう。</p>
+        <p>何気ない時間をゆっくり楽しむ。</p>
+        <p>そんな「宿で過ごす時間」まで含めて、<br>旅そのものを楽しんでいただきたい。</p>
+        <p>富士宮の自然と文化に寄り添いながら、<br>心ほどけるひとときをお届けします。</p>
+      </div>
+    </div>
+    <div class="about__photos">
+      <figure class="about__photo about__photo--main fade">
+        <img src="https://images.unsplash.com/photo-1698877036155-dd730fc2ca5b?auto=format&fit=crop&w=1400&q=80" alt="木々に囲まれた旅館の外観" loading="lazy">
+      </figure>
+      <figure class="about__photo about__photo--sub1 fade">
+        <img src="https://images.unsplash.com/photo-1757852801748-8cfdb4f8b619?auto=format&fit=crop&w=900&q=80" alt="縁側から眺める日本庭園" loading="lazy">
+      </figure>
+      <figure class="about__photo about__photo--sub2 fade">
+        <img src="https://images.unsplash.com/photo-1698239307081-375b3f3da4c0?auto=format&fit=crop&w=900&q=80" alt="灯りがともる静かな館内の廊下" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 03 この宿でしか味わえない時間 ==================== -->
+<section class="sec moments">
+  <div class="inner">
+    <header class="sec-head fade">
+      <p class="sec-en">Moments</p>
+      <h2 class="sec-title">この宿でしか味わえない時間</h2>
+    </header>
+
+    <article class="moment fade">
+      <figure class="moment__img">
+        <img src="images/window.jpg" alt="客室の窓の向こうに広がる富士山" loading="lazy" width="1600" height="2400">
+      </figure>
+      <div class="moment__body">
+        <p class="moment__num">01</p>
+        <h3 class="moment__title">富士山を眺める。</h3>
+        <div class="prose">
+          <p>朝、目を覚ます。</p>
+          <p>カーテンを開けると、<br>そこに富士山がある。</p>
+          <p>季節や時間によって表情を変える<br>その姿を眺めながら過ごす時間は、<br>ここでしか味わえないものです。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="moment moment--rev fade">
+      <figure class="moment__img">
+        <img src="https://images.unsplash.com/photo-1766582931800-fd79665257fa?auto=format&fit=crop&w=1400&q=80" alt="小鉢が並ぶ季節の会席料理" loading="lazy">
+      </figure>
+      <div class="moment__body">
+        <p class="moment__num">02</p>
+        <h3 class="moment__title">季節を味わう。</h3>
+        <div class="prose">
+          <p>富士宮をはじめ、<br>静岡には豊かな食材があります。</p>
+          <p>その土地で採れたものを、<br>その季節に最もおいしい形で。</p>
+          <p>一皿一皿に、<br>富士の麓ならではの季節を込めています。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="moment fade">
+      <figure class="moment__img">
+        <img src="https://images.unsplash.com/photo-1785871097878-badfc1b0d43b?auto=format&fit=crop&w=1400&q=80" alt="静かな部屋から庭を眺めて過ごす" loading="lazy">
+      </figure>
+      <div class="moment__body">
+        <p class="moment__num">03</p>
+        <h3 class="moment__title">何もしない時間を<br class="sp">楽しむ。</h3>
+        <div class="prose">
+          <p>予定を詰め込まない。</p>
+          <p>スマートフォンから少し離れて、<br>温泉につかり、<br>静かな部屋でゆっくり過ごす。</p>
+          <p>何かをするためではなく、<br>何もしないために訪れる。</p>
+          <p>そんな贅沢も、<br>旅のひとつだと私たちは考えています。</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== 04 お料理 ==================== -->
+<section class="sec dining" id="dining">
+  <div class="inner">
+    <header class="sec-head fade">
+      <p class="sec-en">Dining</p>
+      <h2 class="sec-title">富士の恵みを、一皿に。</h2>
+      <p class="sec-lead">旅の記憶に残るのは、景色だけではありません。<br>その土地で食べたものもまた、<br class="sp">旅を思い出す大切な記憶になります。</p>
+    </header>
+  </div>
+  <figure class="dining__main fade">
+    <img src="images/dinner.jpg" alt="地元の食材を使った会席料理" loading="lazy" width="2000" height="1333">
+  </figure>
+  <div class="inner">
+    <div class="dining__body">
+      <div class="prose fade">
+        <p>富士宮・静岡周辺の食材を中心に、<br>旬の味わいを大切にした料理をご用意します。</p>
+        <p>季節ごとに変わる食材。<br>料理人の技。<br>器や盛り付け。</p>
+        <p>目で楽しみ、<br>香りを楽しみ、<br>最後の一口まで味わう。</p>
+        <p>富士宮で過ごす一夜を、<br>料理からも感じていただけるように。</p>
+      </div>
+      <figure class="dining__chef fade">
+        <img src="https://images.unsplash.com/photo-1688267224086-7fcedea2cc0f?auto=format&fit=crop&w=900&q=80" alt="厨房で料理を仕込む料理人" loading="lazy">
+      </figure>
+    </div>
+
+    <ul class="season">
+      <li class="season__item fade">
+        <figure><img src="https://images.unsplash.com/photo-1765295218728-8e29bb47c1ef?auto=format&fit=crop&w=600&q=80" alt="春の青菜を使った一品" loading="lazy"></figure>
+        <p class="season__name"><span>春</span>Spring</p>
+        <p class="season__text">山菜・春野菜など</p>
+      </li>
+      <li class="season__item fade">
+        <figure><img src="https://images.unsplash.com/photo-1551014700-0ca41391f312?auto=format&fit=crop&w=600&q=80" alt="焼き魚" loading="lazy"></figure>
+        <p class="season__name"><span>夏</span>Summer</p>
+        <p class="season__text">鮎・夏野菜など</p>
+      </li>
+      <li class="season__item fade">
+        <figure><img src="https://images.unsplash.com/photo-1772198537624-5501e3667457?auto=format&fit=crop&w=600&q=80" alt="きのこを使った秋の一皿" loading="lazy"></figure>
+        <p class="season__name"><span>秋</span>Autumn</p>
+        <p class="season__text">きのこ・山の幸など</p>
+      </li>
+      <li class="season__item fade">
+        <figure><img src="https://images.unsplash.com/photo-1763705859380-27dc4be72013?auto=format&fit=crop&w=600&q=80" alt="大根や練り物を煮含めた冬の一品" loading="lazy"></figure>
+        <p class="season__name"><span>冬</span>Winter</p>
+        <p class="season__text">静岡の冬の味覚など</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== 05 客室・温泉 ==================== -->
+<section class="sec stay">
+  <div class="inner">
+    <header class="sec-head fade">
+      <p class="sec-en">Room &amp; Onsen</p>
+      <h2 class="sec-title">日常から離れて、<br class="sp">深く休む。</h2>
+    </header>
+
+    <article class="stay-block" id="room">
+      <div class="stay-block__imgs fade">
+        <figure class="stay-block__main"><img src="images/room.jpg" alt="畳敷きの静かな客室" loading="lazy" width="2000" height="1500"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1757852823730-8bf5b66af780?auto=format&fit=crop&w=700&q=80" alt="庭に面した和室" loading="lazy"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1745813083408-efae3cd6c0f3?auto=format&fit=crop&w=700&q=80" alt="戸口から差し込む柔らかな光" loading="lazy"></figure>
+      </div>
+      <div class="stay-block__body fade">
+        <p class="stay-block__label">客室<span>Room</span></p>
+        <h3 class="stay-block__title">静けさに包まれる。</h3>
+        <div class="prose">
+          <p>扉を開けた瞬間から、<br>日常とは少し違う時間が始まります。</p>
+          <p>木の温もり。<br>柔らかな光。<br>窓の向こうに広がる景色。</p>
+          <p>一日の終わりには、<br>何も考えずゆっくりと身体を休めてください。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="stay-block stay-block--rev" id="onsen">
+      <div class="stay-block__imgs fade">
+        <figure class="stay-block__main"><img src="images/spring.jpg" alt="富士山を望む露天風呂" loading="lazy" width="640" height="425"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1726537625746-4ab5285c60f8?auto=format&fit=crop&w=700&q=80" alt="灯りがともる浴場" loading="lazy"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1610375233775-6e0166927193?auto=format&fit=crop&w=700&q=80" alt="窓辺の湯上がりスペース" loading="lazy"></figure>
+      </div>
+      <div class="stay-block__body fade">
+        <p class="stay-block__label">温泉<span>Onsen</span></p>
+        <h3 class="stay-block__title">湯に浸かり、心をほどく。</h3>
+        <div class="prose">
+          <p>温泉に身体を預け、<br>ゆっくりと深呼吸する。</p>
+          <p>旅の疲れを癒やしながら、<br>時間を忘れて過ごす。</p>
+          <p>富士宮の自然を感じながら、<br>心と身体をゆっくり整える時間です。</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== 06 富士宮を楽しむ ==================== -->
+<section class="sec fujinomiya" id="fujinomiya">
+  <div class="inner">
+    <header class="sec-head fade">
+      <p class="sec-en">Fujinomiya</p>
+      <h2 class="sec-title">この場所だからこそ<br class="sp">出会える景色。</h2>
+      <p class="sec-lead">旅館で過ごす時間だけでなく、<br class="sp">富士宮の街そのものも旅の一部。<br>富士山の麓だからこそ出会える<br class="sp">景色や文化をお楽しみください。</p>
+    </header>
+    <ul class="spots">
+      <li class="spot fade">
+        <figure><img src="https://images.unsplash.com/photo-1767387709906-063dcd8906e7?auto=format&fit=crop&w=800&q=80" alt="青空の下の富士山" loading="lazy"></figure>
+        <h3 class="spot__name">富士山</h3>
+        <p class="spot__text">雄大な姿を間近に感じる。</p>
+      </li>
+      <li class="spot fade">
+        <figure><img src="https://images.unsplash.com/photo-1688616128916-9c4f4a612e33?auto=format&fit=crop&w=800&q=80" alt="木々に囲まれた神社の鳥居" loading="lazy"></figure>
+        <h3 class="spot__name">富士山本宮浅間大社</h3>
+        <p class="spot__text">富士山信仰の歴史と文化に触れる。</p>
+      </li>
+      <li class="spot fade">
+        <figure><img src="images/shiraito.jpg" alt="白糸の滝" loading="lazy" width="640" height="480"></figure>
+        <h3 class="spot__name">白糸の滝</h3>
+        <p class="spot__text">水の流れと自然がつくる、<br>富士山麓ならではの景色。</p>
+      </li>
+      <li class="spot fade">
+        <figure><img src="https://images.unsplash.com/photo-1783094724125-663ad1beb2ef?auto=format&fit=crop&w=800&q=80" alt="緑の丘の向こうにそびえる富士山" loading="lazy"></figure>
+        <h3 class="spot__name">朝霧高原</h3>
+        <p class="spot__text">広い空と大地の中で、<br>富士山をさらに近くに感じる。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== 07 お客様への約束 ==================== -->
+<section class="sec promise">
+  <div class="inner">
+    <header class="sec-head fade">
+      <p class="sec-en">Promise</p>
+      <h2 class="sec-title">また帰ってきたくなる宿へ。</h2>
+    </header>
+    <div class="promise__text prose fade">
+      <p>一度訪れて終わるのではなく、</p>
+      <p class="promise__quote">「また、この場所に来たい。」</p>
+      <p>そう思っていただける旅館でありたい。</p>
+      <p>華美なサービスだけではなく、<br>一人ひとりのお客様に寄り添うこと。</p>
+      <p>料理、客室、温泉、景色、<br>そして人。</p>
+      <p>そのすべてを通して、<br>心に残る時間をお届けします。</p>
+    </div>
+    <ol class="promise__cards">
+      <li class="card fade">
+        <p class="card__num">01</p>
+        <h3 class="card__title">もてなす</h3>
+        <p class="card__text">一人ひとりのお客様に寄り添い、<br class="pc">心地よく過ごしていただける時間をつくります。</p>
+      </li>
+      <li class="card fade">
+        <p class="card__num">02</p>
+        <h3 class="card__title">季節を届ける</h3>
+        <p class="card__text">その時、その場所でしか味わえない<br class="pc">料理や景色を大切にします。</p>
+      </li>
+      <li class="card fade">
+        <p class="card__num">03</p>
+        <h3 class="card__title">富士を感じる</h3>
+        <p class="card__text">富士宮だからこそ味わえる自然と文化を、<br class="pc">旅館での時間とともに届けます。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== 08 最終CTA ==================== -->
+<section class="final" id="reserve">
+  <div class="final__bg">
+    <img src="images/fuji2.jpg" alt="紅葉越しに望む夕暮れの富士山" loading="lazy" width="2400" height="1500">
+  </div>
+  <div class="final__inner fade">
+    <p class="sec-en sec-en--light">Reservation</p>
+    <h2 class="final__title">次の旅は、富士宮へ。</h2>
+    <div class="final__text">
+      <p>富士山を眺める。<br>季節の料理を味わう。<br>温泉につかる。<br>そして、何もしない時間を楽しむ。</p>
+      <p>忙しい日常から少し離れて、<br>自分たちのための時間を<br class="sp">過ごしてみませんか。</p>
+      <p>富士宮の麓で、<br class="sp">皆さまのお越しをお待ちしています。</p>
+    </div>
+    <div class="final__cta">
+      <a href="#" class="btn btn--gold btn--lg js-reserve" target="_blank" rel="noopener">宿泊を予約する</a>
+      <a href="#" class="btn btn--light js-vacancy" target="_blank" rel="noopener">空室を確認する</a>
+    </div>
+    <p class="final__tel">お電話でのご予約・お問い合わせ<br class="sp"><a href="tel:000-0000-0000">TEL 000-0000-0000</a></p>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== フッター ==================== -->
+<footer class="footer" id="access">
+  <div class="inner footer__grid">
+    <div class="footer__info">
+      <img src="images/logo-white.svg" alt="富士白苑" class="footer__logo" width="160" height="120" loading="lazy">
+      <p class="footer__name">富士宮 富士白苑</p>
+      <address class="footer__addr">
+        〒421-3305<br>
+        静岡県富士市岩淵１４８８−１<br>
+        TEL：<a href="tel:000-0000-0000">000-0000-0000</a>
+      </address>
+    </div>
+    <div class="footer__map">
+      <iframe src="https://www.google.com/maps?q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E5%AF%8C%E5%A3%AB%E5%B8%82%E5%B2%A9%E6%B7%B51488-1&output=embed" title="富士白苑へのアクセスマップ" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="footer__links">
+      <nav aria-label="フッターナビゲーション">
+        <ul class="footer__nav">
+          <li><a href="#about">この宿について</a></li>
+          <li><a href="#room">客室</a></li>
+          <li><a href="#onsen">温泉</a></li>
+          <li><a href="#dining">お料理</a></li>
+          <li><a href="#fujinomiya">富士宮を楽しむ</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#" class="js-reserve" target="_blank" rel="noopener">宿泊予約</a></li>
+        </ul>
+      </nav>
+      <ul class="footer__sns">
+        <li><a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
+        </a></li>
+        <li><a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21z" fill="currentColor"/></svg>
+        </a></li>
+      </ul>
+      <ul class="footer__sub">
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">特定商取引法に基づく表記</a></li>
+        <li><a href="#">キャンセルポリシー</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer__copy"><small>&copy; 富士宮 富士白苑</small></p>
+</footer>
+
+<!-- SP固定予約バー -->
+<div class="sp-bar" id="spBar">
+  <a href="#" class="js-vacancy" target="_blank" rel="noopener">空室を確認する</a>
+  <a href="#" class="js-reserve" target="_blank" rel="noopener">宿泊を予約する</a>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

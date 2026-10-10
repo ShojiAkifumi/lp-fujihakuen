@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富士白苑 LP ワイヤーフレーム</title>
+<meta name="robots" content="noindex">
+<style>
+  /* ============================================================
+     Wireframe（グレースケール）
+     - 画像は .ph（プレースホルダー）で表現
+     - セクション左上のラベルは構成番号（原稿・構成.md と対応）
+     - 右下の「注釈」ボタンで注釈の表示／非表示を切替
+     ============================================================ */
+  :root {
+    --bg: #fff;
+    --bg-sub: #f4f4f4;
+    --bg-dark: #2b2b2b;
+    --line: #cfcfcf;
+    --ph: #dcdcdc;
+    --ph-dark: #bdbdbd;
+    --text: #222;
+    --text-sub: #666;
+    --note: #2a6fdb;
+    --header-h: 72px;
+    --gutter: 40px;
+    --max: 1120px;
+    --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+    --sans: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+  body { font-family: var(--serif); color: var(--text); background: var(--bg); line-height: 2; letter-spacing: .06em; font-size: 15px; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { display: block; max-width: 100%; }
+
+  .inner { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .inner--narrow { max-width: 760px; }
+  .sec { position: relative; padding: 140px 0; border-top: 1px dashed var(--line); }
+  .sec--sub { background: var(--bg-sub); }
+  .center { text-align: center; }
+
+  /* 構成ラベル・注釈 */
+  .wf-label {
+    position: absolute; top: 12px; left: 12px; z-index: 5;
+    font: 600 11px/1.4 var(--sans); letter-spacing: .04em;
+    background: var(--note); color: #fff; padding: 3px 8px; border-radius: 2px;
+  }
+  .wf-note {
+    display: block; margin-top: 12px;
+    font: 12px/1.6 var(--sans); letter-spacing: .02em; color: var(--note);
+    border-left: 2px solid var(--note); padding-left: 8px; text-align: left;
+  }
+  body.hide-notes .wf-label, body.hide-notes .wf-note { display: none; }
+  .wf-toggle {
+    position: fixed; right: 16px; bottom: 16px; z-index: 200;
+    font: 600 12px var(--sans); background: var(--note); color: #fff;
+    border: 0; border-radius: 20px; padding: 8px 16px; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+
+  /* 画像プレースホルダー */
+  .ph {
+    position: relative; width: 100%; background: var(--ph);
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font: 12px/1.6 var(--sans); color: #777; letter-spacing: .02em; padding: 16px;
+    background-image:
+      linear-gradient(to top right, transparent calc(50% - .5px), var(--ph-dark) 50%, transparent calc(50% + .5px)),
+      linear-gradient(to top left, transparent calc(50% - .5px), var(--ph-dark) 50%, transparent calc(50% + .5px));
+  }
+  .ph span { background: var(--ph); padding: 2px 8px; position: relative; }
+  .ph--wide { aspect-ratio: 16 / 9; }
+  .ph--land { aspect-ratio: 3 / 2; }
+  .ph--port { aspect-ratio: 4 / 5; }
+  .ph--sq { aspect-ratio: 1 / 1; }
+  .ph--pano { aspect-ratio: 21 / 9; }
+
+  /* 見出し・テキスト */
+  .en { display: block; font: 12px/1 var(--sans); letter-spacing: .3em; color: var(--text-sub); margin-bottom: 20px; }
+  .h2 { font-size: clamp(22px, 2.6vw, 32px); font-weight: 500; line-height: 1.7; letter-spacing: .12em; }
+  .h3 { font-size: clamp(20px, 2.1vw, 26px); font-weight: 500; line-height: 1.7; letter-spacing: .12em; }
+  .h4 { font-size: 18px; font-weight: 500; letter-spacing: .12em; }
+  .text { margin-top: 32px; }
+  .text p + p { margin-top: 1.4em; }
+  .lead { margin-top: 32px; color: var(--text-sub); }
+  .vertical-sp { display: none; }
+
+  /* ボタン */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-width: 240px; height: 56px; padding: 0 32px;
+    border: 1px solid var(--text); font-size: 15px; letter-spacing: .14em;
+    transition: opacity .3s;
+  }
+  .btn:hover { opacity: .7; }
+  .btn--primary { background: var(--text); color: #fff; }
+  .btn--ghost { background: transparent; }
+  .btn--light { border-color: #fff; color: #fff; }
+  .btn--lg { min-width: 320px; height: 68px; font-size: 18px; }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 16px; }
+  .btn-group.center { justify-content: center; }
+
+  /* ===== 00 ヘッダー ===== */
+  .header {
+    position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h);
+    background: rgba(255,255,255,.94); border-bottom: 1px solid var(--line);
+  }
+  .header .wf-label { top: auto; bottom: -24px; }
+  .hero .wf-label { top: calc(var(--header-h) + 36px); }
+  .header__inner { height: 100%; display: flex; align-items: center; gap: 32px; padding: 0 24px; }
+  .header__logo { display: flex; align-items: center; height: 60px; flex-shrink: 0; }
+  .header__logo img { height: 100%; width: auto; }
+  .header__nav { margin-left: auto; }
+  .header__nav ul { display: flex; gap: 28px; font-size: 14px; }
+  .header__cta .btn { min-width: 0; height: 44px; padding: 0 24px; font-size: 14px; }
+  .hamburger { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: #fff; flex-direction: column; justify-content: center; align-items: center; gap: 6px; cursor: pointer; }
+  .hamburger span { width: 20px; height: 1px; background: var(--text); }
+  .drawer { display: none; }
+
+  /* ===== 01 ヒーロー ===== */
+  .hero { position: relative; min-height: 100vh; padding: calc(var(--header-h) + 64px) 0 96px; border-top: 0; display: flex; }
+  .hero__bg { position: absolute; inset: 0; aspect-ratio: auto; height: 100%; }
+  .hero__body {
+    position: relative; z-index: 2; width: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero__catch { font-size: clamp(24px, 3.4vw, 48px); font-weight: 500; line-height: 1.7; letter-spacing: .14em; }
+  .hero__catch span { display: block; white-space: nowrap; }
+  .hero__lead { margin-top: 32px; max-width: 420px; }
+  .hero__lead p + p { margin-top: 1.2em; }
+  .hero__cta { margin-top: 48px; }
+  .hero__body .text-box { background: rgba(255,255,255,.82); padding: 48px; max-width: 620px; }
+  .scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 2; font: 11px var(--sans); letter-spacing: .3em; }
+
+  /* ===== 02 この宿について ===== */
+  .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about__photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .about__photos .ph:first-child { grid-column: 1 / -1; }
+
+  /* ===== 03 この宿でしか味わえない時間 ===== */
+  .moments__head { margin-bottom: 100px; }
+  .moment { display: grid; grid-template-columns: 7fr 5fr; gap: 72px; align-items: center; }
+  .moment + .moment { margin-top: 120px; }
+  .moment--rev .moment__img { order: 2; }
+  .moment__num { font: 12px var(--sans); letter-spacing: .3em; color: var(--text-sub); }
+  .moment .h3 { margin-top: 12px; }
+
+  /* ===== 04 お料理 ===== */
+  .dining__main { margin-top: 64px; }
+  .dining__body { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 72px; align-items: start; }
+  .season { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 100px; }
+  .season__item .h4 { margin-top: 16px; }
+  .season__item p { font-size: 14px; color: var(--text-sub); }
+
+  /* ===== 05 客室・温泉 ===== */
+  .stay__head { margin-bottom: 80px; }
+  .stay-block { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+  .stay-block + .stay-block { margin-top: 120px; }
+  .stay-block--rev .stay-block__imgs { order: 2; }
+  .stay-block__imgs { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+  .stay-block__imgs .ph:first-child { grid-row: span 2; height: 100%; aspect-ratio: auto; }
+  .stay-block__label { font: 12px var(--sans); letter-spacing: .3em; color: var(--text-sub); }
+  .stay-block .h3 { margin-top: 12px; }
+
+  /* ===== 06 富士宮を楽しむ ===== */
+  .spots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 80px; }
+  .spot .h4 { margin-top: 20px; }
+  .spot p { margin-top: 8px; font-size: 14px; color: var(--text-sub); }
+
+  /* ===== 07 お客様への約束 ===== */
+  .promise__quote { margin: 40px 0; font-size: 20px; letter-spacing: .14em; }
+  .promise__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 80px; }
+  .card { background: #fff; border: 1px solid var(--line); padding: 48px 32px; text-align: center; }
+  .card__num { font: 13px var(--sans); letter-spacing: .3em; color: var(--text-sub); }
+  .card__icon { width: 56px; height: 56px; margin: 20px auto; border-radius: 50%; }
+  .card p { margin-top: 16px; font-size: 14px; text-align: left; }
+
+  /* ===== 08 最終CTA ===== */
+  .final { position: relative; padding: 0; border-top: 0; }
+  .final__bg { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
+  .final__body { position: relative; z-index: 2; padding: 160px 0; }
+  .final__box { background: rgba(255,255,255,.88); padding: 72px 56px; max-width: 720px; margin: 0 auto; }
+  .final .btn-group { margin-top: 48px; }
+  .final__tel { margin-top: 24px; font: 13px/1.8 var(--sans); color: var(--text-sub); }
+
+  /* ===== 09 フッター ===== */
+  .footer { position: relative; background: var(--bg-dark); color: #ddd; padding: 96px 0 32px; }
+  .footer__grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 56px; }
+  .footer__logo { width: 160px; height: 56px; background: #555; display: flex; align-items: center; justify-content: center; font: 11px var(--sans); color: #ccc; }
+  .footer__name { margin-top: 20px; font-size: 18px; letter-spacing: .14em; }
+  .footer__addr { margin-top: 12px; font-size: 14px; }
+  .footer__map { margin-top: 24px; background: #444; color: #aaa; }
+  .footer__map span { background: #444; }
+  .footer h4 { font: 600 12px var(--sans); letter-spacing: .3em; color: #999; margin-bottom: 16px; }
+  .footer li { font-size: 14px; }
+  .footer li + li { margin-top: 8px; }
+  .footer__sns { display: flex; gap: 12px; }
+  .footer__sns a { width: 44px; height: 44px; border: 1px solid #777; display: flex; align-items: center; justify-content: center; font: 10px var(--sans); }
+  .footer__sub { margin-top: 32px; }
+  .footer__sub li { font-size: 12px; color: #aaa; }
+  .footer__copy { margin-top: 72px; padding-top: 24px; border-top: 1px solid #444; text-align: center; font: 12px var(--sans); color: #999; }
+  .footer .wf-label { top: 12px; }
+
+  /* SP固定予約バー */
+  .sp-bar { display: none; }
+
+  /* ============================================================
+     Tablet
+     ============================================================ */
+  @media (max-width: 1080px) {
+    .header__nav, .header__cta { display: none; }
+    .hamburger { display: flex; margin-left: auto; }
+    .drawer {
+      position: fixed; inset: var(--header-h) 0 0 0; z-index: 99; background: #fff;
+      padding: 40px 24px; overflow-y: auto;
+    }
+    .drawer.is-open { display: block; }
+    .drawer li { border-bottom: 1px solid var(--line); }
+    .drawer li a { display: block; padding: 16px 0; }
+    .drawer .btn-group { margin-top: 32px; flex-direction: column; }
+    .drawer .btn { width: 100%; }
+
+    .about__grid, .moment, .stay-block, .dining__body { gap: 48px; }
+    .spots { grid-template-columns: repeat(2, 1fr); }
+    .season { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============================================================
+     SP
+     ============================================================ */
+  @media (max-width: 767px) {
+    :root { --header-h: 60px; --gutter: 20px; }
+    body { font-size: 14px; }
+    .sec { padding: 88px 0; }
+    .header__inner { padding: 0 16px; }
+    .header__logo { height: 50px; }
+    .pc { display: none; }
+    .vertical-sp { display: inline; }
+
+    .hero { min-height: 100svh; padding-bottom: 88px; }
+    .hero__catch span { white-space: normal; }
+    .hero__body { justify-content: flex-end; }
+    .hero__body .text-box { padding: 28px 24px; }
+    .hero__lead { margin-top: 20px; }
+    .hero__cta { margin-top: 28px; }
+    .hero__cta .btn { width: 100%; }
+
+    .about__grid, .moment, .stay-block, .dining__body { grid-template-columns: 1fr; gap: 32px; }
+    .moment--rev .moment__img, .stay-block--rev .stay-block__imgs { order: 0; }
+    .moments__head { margin-bottom: 56px; }
+    .moment + .moment, .stay-block + .stay-block { margin-top: 80px; }
+    /* SPは写真を画面幅いっぱいに大きく見せる */
+    .moment__img, .stay-block__imgs, .dining__main { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .moment__img .ph { aspect-ratio: 4 / 5; }
+    .dining__main .ph { aspect-ratio: 4 / 3; }
+    .stay-block__imgs { grid-template-columns: 1fr 1fr; }
+    .stay-block__imgs .ph:first-child { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 4 / 3; }
+
+    .season { gap: 16px; margin-top: 64px; }
+    .spots { margin-top: 48px; gap: 32px 16px; }
+    .spot p { font-size: 13px; }
+    .spot .h4 { font-size: 15px; letter-spacing: .06em; }
+    .promise__cards { grid-template-columns: 1fr; gap: 16px; margin-top: 56px; }
+    .card { padding: 36px 24px; }
+
+    .final__body { padding: 88px 0; }
+    .final__box { padding: 48px 20px; }
+    .btn, .btn--lg { width: 100%; min-width: 0; }
+
+    .footer { padding: 64px 0 96px; }
+    .footer__grid { grid-template-columns: 1fr; gap: 40px; }
+
+    .sp-bar {
+      display: grid; grid-template-columns: 1fr 1fr; position: fixed; inset: auto 0 0 0; z-index: 90;
+      border-top: 1px solid var(--line); background: #fff;
+    }
+    .sp-bar a { display: flex; align-items: center; justify-content: center; height: 56px; font-size: 14px; letter-spacing: .1em; }
+    .sp-bar a:first-child { border-right: 1px solid var(--line); }
+    .sp-bar a:last-child { background: var(--text); color: #fff; }
+    .wf-toggle { bottom: 72px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 00. ヘッダー ==================== -->
+<header class="header" id="top">
+  <span class="wf-label">00 ヘッダー（固定）</span>
+  <div class="header__inner">
+    <a href="#top" class="header__logo"><img src="../素材/fuji_hakuen_logo.svg" alt="富士宮 富士白苑"></a>
+    <nav class="header__nav">
+      <ul>
+        <li><a href="#about">この宿について</a></li>
+        <li><a href="#room">客室</a></li>
+        <li><a href="#onsen">温泉</a></li>
+        <li><a href="#dining">お料理</a></li>
+        <li><a href="#fujinomiya">富士宮を楽しむ</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+    </nav>
+    <div class="header__cta"><a href="#reserve" class="btn btn--primary">宿泊を予約する</a></div>
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <ul>
+    <li><a href="#about">この宿について</a></li>
+    <li><a href="#room">客室</a></li>
+    <li><a href="#onsen">温泉</a></li>
+    <li><a href="#dining">お料理</a></li>
+    <li><a href="#fujinomiya">富士宮を楽しむ</a></li>
+    <li><a href="#access">アクセス</a></li>
+  </ul>
+  <div class="btn-group">
+    <a href="#reserve" class="btn btn--primary">宿泊を予約する</a>
+    <a href="#reserve" class="btn btn--ghost">空室を確認する</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ==================== 01. ヒーロー ==================== -->
+<section class="sec hero">
+  <span class="wf-label">01 ヒーロー／ファーストビュー</span>
+  <div class="ph hero__bg"><span>メインビジュアル：朝または夕方の光に包まれた富士山＋旅館＋自然（fuji.jpg 想定）<br>全画面・ゆっくりフェード or 静止</span></div>
+  <div class="inner hero__body">
+    <div class="text-box">
+      <h1 class="hero__catch"><span>富士を眺め、<br class="vertical-sp">季節を味わい、</span><span>何もしない贅沢を。</span></h1>
+      <div class="hero__lead">
+        <p>富士山の麓、富士宮。</p>
+        <p>雄大な山を眺め、<br>季節の恵みを味わい、<br>温泉に身をゆだねる。</p>
+        <p>ここでは、時間さえも<br>ゆっくり流れていきます。</p>
+      </div>
+      <div class="btn-group hero__cta">
+        <a href="#reserve" class="btn btn--primary">宿泊を予約する</a>
+        <a href="#reserve" class="btn btn--ghost">空室を確認する</a>
+      </div>
+      <small class="wf-note">本番では写真上に白文字で直接配置想定。WFでは可読性のため白ボックスで表示。</small>
+    </div>
+  </div>
+  <span class="scroll">SCROLL</span>
+</section>
+
+<!-- ==================== 02. この宿について ==================== -->
+<section class="sec" id="about">
+  <span class="wf-label">02 この宿について</span>
+  <div class="inner">
+    <div class="about__grid">
+      <div>
+        <span class="en">ABOUT</span>
+        <h2 class="h2">富士山の麓で、<br>旅の時間を深くする。</h2>
+        <div class="text">
+          <p>観光地を巡るだけが、<br>旅ではありません。</p>
+          <p>窓の外に広がる富士山を眺める。</p>
+          <p>湯に浸かり、<br>季節の料理を味わう。</p>
+          <p>何気ない時間をゆっくり楽しむ。</p>
+          <p>そんな「宿で過ごす時間」まで含めて、<br>旅そのものを楽しんでいただきたい。</p>
+          <p>富士宮の自然と文化に寄り添いながら、<br>心ほどけるひとときをお届けします。</p>
+        </div>
+      </div>
+      <div class="about__photos">
+        <div class="ph ph--land"><span>旅館外観</span></div>
+        <div class="ph ph--sq"><span>客室からの景色<br>（window.jpg）</span></div>
+        <div class="ph ph--sq"><span>館内の静かな空間</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 03. この宿でしか味わえない時間 ==================== -->
+<section class="sec sec--sub">
+  <span class="wf-label">03 この宿でしか味わえない時間</span>
+  <div class="inner">
+    <div class="moments__head center">
+      <span class="en">MOMENTS</span>
+      <h2 class="h2">この宿でしか味わえない時間</h2>
+      <small class="wf-note" style="display:inline-block">原稿に大見出しの指定なし。セクション名を見出しとして仮置き。</small>
+    </div>
+
+    <article class="moment">
+      <div class="moment__img"><div class="ph ph--land"><span>富士山が見える客室・テラス（fuji2.jpg 想定）</span></div></div>
+      <div class="moment__body">
+        <span class="moment__num">01</span>
+        <h3 class="h3">富士山を眺める。</h3>
+        <div class="text">
+          <p>朝、目を覚ます。</p>
+          <p>カーテンを開けると、<br>そこに富士山がある。</p>
+          <p>季節や時間によって表情を変える<br>その姿を眺めながら過ごす時間は、<br>ここでしか味わえないものです。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="moment moment--rev">
+      <div class="moment__img"><div class="ph ph--land"><span>会席料理・地元食材・料理人</span></div></div>
+      <div class="moment__body">
+        <span class="moment__num">02</span>
+        <h3 class="h3">季節を味わう。</h3>
+        <div class="text">
+          <p>富士宮をはじめ、<br>静岡には豊かな食材があります。</p>
+          <p>その土地で採れたものを、<br>その季節に最もおいしい形で。</p>
+          <p>一皿一皿に、<br>富士の麓ならではの季節を込めています。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="moment">
+      <div class="moment__img"><div class="ph ph--land"><span>露天風呂・客室・庭</span></div></div>
+      <div class="moment__body">
+        <span class="moment__num">03</span>
+        <h3 class="h3">何もしない時間を楽しむ。</h3>
+        <div class="text">
+          <p>予定を詰め込まない。</p>
+          <p>スマートフォンから少し離れて、<br>温泉につかり、<br>静かな部屋でゆっくり過ごす。</p>
+          <p>何かをするためではなく、<br>何もしないために訪れる。</p>
+          <p>そんな贅沢も、<br>旅のひとつだと私たちは考えています。</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== 04. お料理 ==================== -->
+<section class="sec" id="dining">
+  <span class="wf-label">04 お料理</span>
+  <div class="inner">
+    <div class="center">
+      <span class="en">DINING</span>
+      <h2 class="h2">富士の恵みを、一皿に。</h2>
+      <p class="lead">旅の記憶に残るのは、<br>景色だけではありません。<br>その土地で食べたものもまた、<br>旅を思い出す大切な記憶になります。</p>
+    </div>
+    <div class="dining__main"><div class="ph ph--pano"><span>会席料理メインカット（dinner.jpg 想定）</span></div></div>
+    <div class="dining__body">
+      <div class="text" style="margin-top:0">
+        <p>富士宮・静岡周辺の食材を中心に、<br>旬の味わいを大切にした料理をご用意します。</p>
+        <p>季節ごとに変わる食材。</p>
+        <p>料理人の技。</p>
+        <p>器や盛り付け。</p>
+        <p>目で楽しみ、<br>香りを楽しみ、<br>最後の一口まで味わう。</p>
+        <p>富士宮で過ごす一夜を、<br>料理からも感じていただけるように。</p>
+      </div>
+      <div class="ph ph--port"><span>料理人の手元・器のディテール</span></div>
+    </div>
+
+    <div class="season">
+      <div class="season__item">
+        <div class="ph ph--sq"><span>春の料理</span></div>
+        <h4 class="h4">春</h4>
+        <p>山菜・春野菜など</p>
+      </div>
+      <div class="season__item">
+        <div class="ph ph--sq"><span>夏の料理</span></div>
+        <h4 class="h4">夏</h4>
+        <p>鮎・夏野菜など</p>
+      </div>
+      <div class="season__item">
+        <div class="ph ph--sq"><span>秋の料理</span></div>
+        <h4 class="h4">秋</h4>
+        <p>きのこ・山の幸など</p>
+      </div>
+      <div class="season__item">
+        <div class="ph ph--sq"><span>冬の料理</span></div>
+        <h4 class="h4">冬</h4>
+        <p>静岡の冬の味覚など</p>
+      </div>
+    </div>
+    <small class="wf-note">※具体的な食材は実際の旅館の提供内容に合わせて確定。</small>
+  </div>
+</section>
+
+<!-- ==================== 05. 客室・温泉 ==================== -->
+<section class="sec sec--sub">
+  <span class="wf-label">05 客室・温泉</span>
+  <div class="inner">
+    <div class="stay__head center">
+      <span class="en">ROOM &amp; ONSEN</span>
+      <h2 class="h2">日常から離れて、深く休む。</h2>
+    </div>
+
+    <article class="stay-block" id="room">
+      <div class="stay-block__imgs">
+        <div class="ph"><span>客室全景（room.jpg 想定）</span></div>
+        <div class="ph ph--sq"><span>ディテール</span></div>
+        <div class="ph ph--sq"><span>ディテール</span></div>
+      </div>
+      <div>
+        <span class="stay-block__label">客室</span>
+        <h3 class="h3">静けさに包まれる。</h3>
+        <div class="text">
+          <p>扉を開けた瞬間から、<br>日常とは少し違う時間が始まります。</p>
+          <p>木の温もり。</p>
+          <p>柔らかな光。</p>
+          <p>窓の向こうに広がる景色。</p>
+          <p>一日の終わりには、<br>何も考えずゆっくりと身体を休めてください。</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="stay-block stay-block--rev" id="onsen">
+      <div class="stay-block__imgs">
+        <div class="ph"><span>露天風呂（spring.jpg 想定）</span></div>
+        <div class="ph ph--sq"><span>浴場</span></div>
+        <div class="ph ph--sq"><span>湯上がりスペース</span></div>
+      </div>
+      <div>
+        <span class="stay-block__label">温泉</span>
+        <h3 class="h3">湯に浸かり、心をほどく。</h3>
+        <div class="text">
+          <p>温泉に身体を預け、<br>ゆっくりと深呼吸する。</p>
+          <p>旅の疲れを癒やしながら、<br>時間を忘れて過ごす。</p>
+          <p>富士宮の自然を感じながら、<br>心と身体をゆっくり整える時間です。</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== 06. 富士宮を楽しむ ==================== -->
+<section class="sec" id="fujinomiya">
+  <span class="wf-label">06 富士宮を楽しむ</span>
+  <div class="inner">
+    <div class="center">
+      <span class="en">FUJINOMIYA</span>
+      <h2 class="h2">この場所だからこそ<br class="vertical-sp">出会える景色。</h2>
+      <p class="lead">旅館で過ごす時間だけでなく、<br>富士宮の街そのものも旅の一部。<br>富士山の麓だからこそ出会える<br>景色や文化をお楽しみください。</p>
+    </div>
+    <div class="spots">
+      <div class="spot">
+        <div class="ph ph--port"><span>富士山の絶景</span></div>
+        <h3 class="h4">富士山</h3>
+        <p>雄大な姿を間近に感じる。</p>
+      </div>
+      <div class="spot">
+        <div class="ph ph--port"><span>境内・鳥居</span></div>
+        <h3 class="h4">富士山本宮浅間大社</h3>
+        <p>富士山信仰の歴史と文化に触れる。</p>
+      </div>
+      <div class="spot">
+        <div class="ph ph--port"><span>滝・周辺自然<br>（shiraito.jpg）</span></div>
+        <h3 class="h4">白糸の滝</h3>
+        <p>水の流れと自然がつくる、<br>富士山麓ならではの景色。</p>
+      </div>
+      <div class="spot">
+        <div class="ph ph--port"><span>朝霧高原・富士山</span></div>
+        <h3 class="h4">朝霧高原</h3>
+        <p>広い空と大地の中で、<br>富士山をさらに近くに感じる。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 07. お客様への約束 ==================== -->
+<section class="sec sec--sub">
+  <span class="wf-label">07 お客様への約束</span>
+  <div class="inner">
+    <div class="inner--narrow center" style="margin:0 auto">
+      <span class="en">PROMISE</span>
+      <h2 class="h2">また帰ってきたくなる宿へ。</h2>
+      <div class="text">
+        <p>一度訪れて終わるのではなく、</p>
+      </div>
+      <p class="promise__quote">「また、この場所に来たい。」</p>
+      <div class="text" style="margin-top:0">
+        <p>そう思っていただける旅館でありたい。</p>
+        <p>華美なサービスだけではなく、<br>一人ひとりのお客様に寄り添うこと。</p>
+        <p>料理、客室、温泉、景色、<br>そして人。</p>
+        <p>そのすべてを通して、<br>心に残る時間をお届けします。</p>
+      </div>
+    </div>
+    <div class="promise__cards">
+      <div class="card">
+        <span class="card__num">01</span>
+        <div class="ph card__icon"></div>
+        <h3 class="h4">もてなす</h3>
+        <p>一人ひとりのお客様に寄り添い、心地よく過ごしていただける時間をつくります。</p>
+      </div>
+      <div class="card">
+        <span class="card__num">02</span>
+        <div class="ph card__icon"></div>
+        <h3 class="h4">季節を届ける</h3>
+        <p>その時、その場所でしか味わえない料理や景色を大切にします。</p>
+      </div>
+      <div class="card">
+        <span class="card__num">03</span>
+        <div class="ph card__icon"></div>
+        <h3 class="h4">富士を感じる</h3>
+        <p>富士宮だからこそ味わえる自然と文化を、旅館での時間とともに届けます。</p>
+      </div>
+    </div>
+    <small class="wf-note">カード内の丸はアイコン（線画）想定。不要なら番号のみでも可。</small>
+  </div>
+</section>
+
+<!-- ==================== 08. 最終CTA ==================== -->
+<section class="sec final" id="reserve">
+  <span class="wf-label">08 最終CTA</span>
+  <div class="ph final__bg"><span>背景：夕景の富士山など（全幅）</span></div>
+  <div class="inner final__body">
+    <div class="final__box center">
+      <span class="en">RESERVATION</span>
+      <h2 class="h2">次の旅は、富士宮へ。</h2>
+      <div class="text">
+        <p>富士山を眺める。</p>
+        <p>季節の料理を味わう。</p>
+        <p>温泉につかる。</p>
+        <p>そして、<br>何もしない時間を楽しむ。</p>
+        <p>忙しい日常から少し離れて、<br>自分たちのための時間を<br class="vertical-sp">過ごしてみませんか。</p>
+        <p>富士宮の麓で、<br>皆さまのお越しをお待ちしています。</p>
+      </div>
+      <div class="btn-group center">
+        <a href="#" class="btn btn--primary btn--lg">宿泊を予約する</a>
+      </div>
+      <div class="btn-group center" style="margin-top:16px">
+        <a href="#" class="btn btn--ghost">空室を確認する</a>
+      </div>
+      <p class="final__tel">お電話でのご予約・お問い合わせ<br class="vertical-sp">　<span style="white-space:nowrap">TEL：000-0000-0000</span></p>
+      <small class="wf-note">ボタンは既存の予約システムへ遷移（別タブ）。電話番号はヒアリング第二目的「電話問い合わせ」より追加提案。</small>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== 09. フッター ==================== -->
+<footer class="footer" id="access">
+  <span class="wf-label">09 フッター（アクセス含む）</span>
+  <div class="inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">LOGO（白）</div>
+        <p class="footer__name">富士宮 富士白苑</p>
+        <p class="footer__addr">〒421-3305<br>静岡県富士市岩淵１４８８−１<br>TEL：000-0000-0000</p>
+        <div class="ph ph--land footer__map"><span>Google Map 埋め込み</span></div>
+      </div>
+      <div>
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="#about">この宿について</a></li>
+          <li><a href="#room">客室</a></li>
+          <li><a href="#onsen">温泉</a></li>
+          <li><a href="#dining">お料理</a></li>
+          <li><a href="#fujinomiya">富士宮を楽しむ</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#reserve">宿泊予約</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>SNS</h4>
+        <div class="footer__sns">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+        <ul class="footer__sub">
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="#">特定商取引法に基づく表記</a></li>
+          <li><a href="#">キャンセルポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__copy">© 富士宮 富士白苑</p>
+  </div>
+</footer>
+
+<!-- SP固定予約バー -->
+<div class="sp-bar">
+  <a href="#reserve">空室を確認する</a>
+  <a href="#reserve">宿泊を予約する</a>
+</div>
+
+<button class="wf-toggle" type="button">注釈を隠す</button>
+
+<script>
+  // ハンバーガー
+  const hamburger = document.querySelector('.hamburger');
+  const drawer = document.getElementById('drawer');
+  hamburger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    drawer.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', false);
+  }));
+
+  // 注釈の表示切替
+  const toggle = document.querySelector('.wf-toggle');
+  toggle.addEventListener('click', () => {
+    const hidden = document.body.classList.toggle('hide-notes');
+    toggle.textContent = hidden ? '注釈を表示' : '注釈を隠す';
+  });
+</script>
+</body>
+</html>
